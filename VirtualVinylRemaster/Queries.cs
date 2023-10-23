@@ -3,16 +3,18 @@ namespace VirtualVinylRemaster;
 public class Queries
 {
     private List<Record> _records;
+    private IO inputOutput;
 
     public Queries()
     {
-        var inputOutput = new IO();
+        inputOutput = new IO();
         _records = inputOutput.GetRecords();
     }
 
     public void Refresh()
     {
         var inputOutput = new IO();
+        inputOutput.SaveAndLoad(_records);
         _records = inputOutput.GetRecords();
     }
 
@@ -218,6 +220,36 @@ public class Queries
 
             Console.Write($"{genre,-15} | {new string('#', barLength)}\n");
         }
+    }
+
+    public void AddRecord()
+    {
+        Console.WriteLine("\nYou will now begin the process of adding a record to the database.\n");
+        
+        Console.Write("Enter the artists' name -> ");
+        string? artistName = Console.ReadLine();
+        Console.Write("\nEnter the title name -> ");
+        string? titleName = Console.ReadLine();
+        Console.Write("\nEnter the genre name -> ");
+        string? genreName = Console.ReadLine();
+        Console.Write("\nEnter the play length -> ");
+        string? playLength = Console.ReadLine();
+        Console.Write("\nEnter the condition -> ");
+        string? condition = Console.ReadLine();
+        Console.Write("\nEnter the amount of stock -> ");
+        string? stock = Console.ReadLine();
+        Console.Write("\nEnter the cost(£) -> ");
+        string? cost = Console.ReadLine();
+
+        int parsedStock = int.Parse(stock ?? string.Empty);
+        double parsedCost = double.Parse(cost ?? string.Empty);
+
+        Record record = new Record(artistName, titleName, genreName, playLength, condition, parsedStock, parsedCost);
+        
+        _records.Add(record);
+        
+        this.inputOutput.SaveAndLoad(_records);
+        this.DisplayResults(_records, false);
     }
 
 }

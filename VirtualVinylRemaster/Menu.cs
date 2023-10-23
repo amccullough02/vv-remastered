@@ -51,7 +51,7 @@ public class Menu
                 QueryMenu();
                 break;
             case 2:
-                AddNewRecord();
+                CreateNewRecord();
                 break;
             case 3:
                 Quit();
@@ -120,12 +120,13 @@ public class Menu
                 break;
         }
     }
-    
-    private void AddNewRecord()
-    {
-        Console.WriteLine("Add New Record method called.");
-    }
 
+    private void CreateNewRecord()
+    {
+        Queries queries = new Queries();
+        queries.AddRecord();
+    }
+    
     private void Quit()
     {
         Console.WriteLine("Exiting the program. Goodbye!");
