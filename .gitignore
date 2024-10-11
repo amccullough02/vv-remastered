@@ -1,0 +1,74 @@
+# Ignore Rider project files
+.idea/
+.idea_modules/
+.idea/*
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.sln.ide
+
+# Rider files
+*.DotSettings.user
+
+# Build Folders
+bin/
+obj/
+
+# Rider logs and temporary files
+*.log
+*.tlf
+.idea/workspace.xml
+.idea/tasks.xml
+
+# Rider file-based indexes
+.idea/.idea/
+.idea/.index/
+
+# Visual Studio files
+.vscode/
+
+# Package management
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Image file caches
+*.stackdump
+
+# Mono auto generated files
+mono_crash.*
+
+# NuGet Packages
+*.nupkg
+# The packages folder can be ignored if not under source control
+# Uncomment if necessary:
+# **/packages/*
+# Uncomment if using .NET Core:
+# *.runtimeconfig.json
+
+# MSBuild binary log
+*.binlog
+
+# Coverage files from coverage tools like coverlet
+coverage/
+
+# StyleCop specific files
+StyleCopReport.xml
+
+# MacOS
+.DS_Store
