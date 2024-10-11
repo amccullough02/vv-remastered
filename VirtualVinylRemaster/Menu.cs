@@ -3,7 +3,7 @@ namespace VirtualVinylRemaster;
 public class Menu
 {
     private bool _welcomed;
-    public void MainMenu() // TODO: Make welcome message show only once.
+    public void MainMenu()
     {
         int selectedChoice;
         bool validChoice = false;
@@ -29,7 +29,7 @@ public class Menu
 
             if (int.TryParse(choice, out selectedChoice))
             {
-                if (selectedChoice >= 1 && selectedChoice <= 3)
+                if (selectedChoice is >= 1 and <= 3)
                 {
                     validChoice = true;
                 }
@@ -82,7 +82,7 @@ public class Menu
             
             if (int.TryParse(choice, out selectedChoice))
             {
-                if (selectedChoice >= 1 && selectedChoice <= 5)
+                if (selectedChoice is >= 1 and <= 5)
                 {
                     validChoice = true;
                 }

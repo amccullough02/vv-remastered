@@ -3,17 +3,17 @@ namespace VirtualVinylRemaster;
 public class Queries
 {
     private List<Record> _records;
-    private IO inputOutput;
+    private readonly InputOutput _inputOutput;
 
     public Queries()
     {
-        inputOutput = new IO();
-        _records = inputOutput.GetRecords();
+        _inputOutput = new InputOutput();
+        _records = _inputOutput.GetRecords();
     }
 
     public void Refresh()
     {
-        var inputOutput = new IO();
+        var inputOutput = new InputOutput();
         inputOutput.SaveAndLoad(_records);
         _records = inputOutput.GetRecords();
     }
@@ -244,11 +244,14 @@ public class Queries
         int parsedStock = int.Parse(stock ?? string.Empty);
         double parsedCost = double.Parse(cost ?? string.Empty);
 
-        Record record = new Record(artistName, titleName, genreName, playLength, condition, parsedStock, parsedCost);
+        if (artistName != null && titleName != null && genreName != null && playLength != null && condition != null)
+        {
+            Record record = new Record(artistName, titleName, genreName, playLength, condition, parsedStock, parsedCost);
         
-        _records.Add(record);
-        
-        this.inputOutput.SaveAndLoad(_records);
+            _records.Add(record);
+        }
+
+        this._inputOutput.SaveAndLoad(_records);
         this.DisplayResults(_records, false);
     }
 

@@ -1,14 +1,14 @@
 namespace VirtualVinylRemaster;
 
-public class IO
+public class InputOutput
 {
-    private List<Record> records = new();
+    private readonly List<Record> _records = new();
 
     private void LoadRecordsFromCsv()
     {
         try
         {
-            records.Clear();
+            _records.Clear();
             var relativePath = "../../../data/records.csv";
             var lines = File.ReadAllLines(relativePath);
             foreach (var line in lines)
@@ -18,7 +18,7 @@ public class IO
                 {
                     if (int.TryParse(values[5].Trim(), out int stock) && double.TryParse(values[6].Trim(), out double cost))
                     {
-                        records.Add(new Record(
+                        _records.Add(new Record(
                             values[0].Trim(),
                             values[1].Trim(),
                             values[2].Trim(),
@@ -46,15 +46,13 @@ public class IO
         try
         {
             var relativePath = "../../../data/records.csv";
-            using (StreamWriter writer = new StreamWriter(relativePath))
+            using StreamWriter writer = new StreamWriter(relativePath);
+            foreach (var record in records)
             {
-                foreach (var record in records)
-                {
-                    string csvLine = string.Join(",", record.Artist, record.Title, record.Genre, record.PlayLength,
-                        record.Condition, record.Stock, record.Cost);
+                string csvLine = string.Join(",", record.Artist, record.Title, record.Genre, record.PlayLength,
+                    record.Condition, record.Stock, record.Cost);
                     
-                    writer.WriteLine(csvLine);
-                }
+                writer.WriteLine(csvLine);
             }
         }
         catch (Exception e)
@@ -66,7 +64,7 @@ public class IO
     public List<Record> GetRecords()
     {
         this.LoadRecordsFromCsv();
-        return records;
+        return _records;
     }
 
     public void SaveAndLoad(List<Record> records)

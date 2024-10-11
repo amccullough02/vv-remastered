@@ -2,11 +2,11 @@ namespace VirtualVinylRemaster;
 
 public class Record
 {
-    public string Artist { get; set; } = null!;
-    public string Title { get; set; } = null!;
-    public string Genre { get; set; } = null!;
-    public string PlayLength { get; set; } = null!;
-    public string Condition { get; set; } = null!;
+    public string Artist { get; set; }
+    public string Title { get; set; }
+    public string Genre { get; set; }
+    public string PlayLength { get; set; }
+    public string Condition { get; set; }
     public int Stock { get; set; }
     public double Cost { get; set; }
     

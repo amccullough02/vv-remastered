@@ -2,7 +2,7 @@
 
 static class Program
 {
-    private static void Main(String[] args)
+    private static void Main()
     {
         var menu = new Menu();
         menu.MainMenu();
