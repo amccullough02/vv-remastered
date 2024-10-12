@@ -134,7 +134,7 @@ public class Queries
 
     private void StockMenu(string singleName)
     {
-        Console.Write("\n1. Increase stock.\n2. Decrease stock.\n3. Return to main menu.\n\nSelect your option -> ");
+        Console.Write("\n1. Increase stock.\n2. Decrease stock.\n3. Make no change.\n\nSelect your option -> ");
         string? choice = Console.ReadLine();
         int parsedChoice = int.Parse(choice ?? string.Empty);
 
@@ -147,7 +147,6 @@ public class Queries
                 this.DecreaseStock(singleName);
                 break;
             case 3:
-                Console.WriteLine("Returning to main menu.");
                 break;
         }
     }

@@ -5,7 +5,7 @@ public class Menu
     private bool _welcomed;
     public void MainMenu()
     {
-        int selectedChoice;
+        int intChoice;
         bool validChoice = false;
 
         do
@@ -27,9 +27,9 @@ public class Menu
 
 
 
-            if (int.TryParse(choice, out selectedChoice))
+            if (int.TryParse(choice, out intChoice))
             {
-                if (selectedChoice is >= 1 and <= 3)
+                if (intChoice is >= 1 and <= 3)
                 {
                     validChoice = true;
                 }
@@ -45,13 +45,15 @@ public class Menu
 
         } while (!validChoice);
 
-        switch (selectedChoice)
+        switch (intChoice)
         {
             case 1:
                 QueryMenu();
+                QuitMenu();
                 break;
             case 2:
                 CreateNewRecord();
+                QuitMenu();
                 break;
             case 3:
                 Quit();
@@ -65,7 +67,7 @@ public class Menu
     private void QueryMenu()
     {
         Queries queries = new Queries();
-        int selectedChoice;
+        int intChoice;
         bool validChoice = false;
     
         do
@@ -80,9 +82,9 @@ public class Menu
             Console.Write("Please enter your choice -> ");
             string? choice = Console.ReadLine();
             
-            if (int.TryParse(choice, out selectedChoice))
+            if (int.TryParse(choice, out intChoice))
             {
-                if (selectedChoice is >= 1 and <= 5)
+                if (intChoice is >= 1 and <= 5)
                 {
                     validChoice = true;
                 }
@@ -98,7 +100,7 @@ public class Menu
             
         } while (!validChoice);
         
-        switch (selectedChoice)
+        switch (intChoice)
         {
             case 1:
                 queries.SummaryReport();
@@ -125,6 +127,40 @@ public class Menu
     {
         Queries queries = new Queries();
         queries.AddRecord();
+    }
+
+    private void QuitMenu()
+    {
+        bool validChoice = false;
+        int intChoice;
+
+        do
+        {
+            Console.Write("\nReturn to main menu, or quit?\n" +
+                          "\n1. Return to main menu." +
+                          "\n2. Quit application.\n");
+            Console.Write("\nPlease enter your choice -> ");
+
+            string? choice = Console.ReadLine();
+
+            if (int.TryParse(choice, out intChoice))
+            {
+                if (intChoice is >= 1 and <= 3)
+                {
+                    validChoice = true;
+                }
+            }
+        } while (!validChoice);
+
+        switch (intChoice)
+        {
+            case 1:
+                MainMenu();
+                break;
+            case 2:
+                Quit();
+                break;
+        }
     }
     
     private void Quit()
